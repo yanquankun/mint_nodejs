@@ -28,13 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 var indexRouter = require('./routes/index');
 app.use('/', indexRouter);// 主路由
 
-// catch 404 and forward to error handler
+// 404错误处理
 app.use(function(req, res, next) {
   next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
+},function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
