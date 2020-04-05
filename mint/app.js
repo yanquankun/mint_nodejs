@@ -25,8 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 设置路由映射关系
-var indexRouter = require('./routes/index');
-app.use('/', indexRouter);// 主路由
+var loginRouter = require('./routes/login');
+app.use('/', loginRouter);// 主路由
 
 // 404错误处理
 app.use(function(req, res, next) {

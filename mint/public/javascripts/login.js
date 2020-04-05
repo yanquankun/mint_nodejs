@@ -1,39 +1,28 @@
-function Ajax(json) {
-    var url = json.url;
-    var method = json.method;
-    var success = json.success;
-    var formData = json.formData;
-    var request = null;
-    if (window.XMLHttpRequest) {
-      request = new XMLHttpRequest();
-    } else {
-      try {
-        request = new ActiveObject('Microsoft.XMLHTTP');
-      }
-      catch (faild) {
-        alert('Error:Ajax request faild');
-      }
-    }
-    if (request != null) {
-      request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-          var text = request.responseText;
-          success(text);
-        } else {
-        }
-      }
-      request.open(method, url, true);
-      request.send(formData);
-    }
+if (!window.ajax) document.write("<script src='./javascripts/myAjax.js'></script>");
+function login() {
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  if (username == "" || password == "") {
+    alert('用户名或密码不能为空');
+    return;
   }
-  function login() {
-    Ajax({
-      url: '/getuser',
-      method: 'get',
-      success: function (text) {
-        var data = JSON.parse(text);
-        document.getElementById('name').value = data.data[0].username;
-        document.getElementById('password').value =  data.data[0].password;
-      }
-    })
-  }
+  ajax({
+    url: '/getuser',
+    type: 'GET',
+    data: {
+      username: username,
+      password: password
+    },
+    dataType: 'json',
+    contentType: "application/json",
+    success: function (text) {
+      var data = JSON.parse(text);
+      if (data.code == 200) alert(data.msg);
+      else alert(data.msg);
+    },
+    //异常处理
+    error: function (e) {
+      console.log(e);
+    }
+  })
+}
