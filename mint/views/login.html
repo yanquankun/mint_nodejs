@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>登录</title>
+  <title><%= res.title %></title>
   <link rel='stylesheet' href='./css/login.css' />
   <script src="./javascripts/login.js"></script>
 </head>
@@ -14,7 +14,7 @@
     <div class="inner">
       <table class="table">
         <caption>
-          <h1>订单管理系统</h1>
+          <h1>订单管理系统<%= res.title %></h1>
         </caption>
         <tr height="30px">
           <td><big><b>账&nbsp;&nbsp;号</b></big></td>
@@ -26,13 +26,13 @@
         </tr>
         <tr height="30px">
           <td colspan="2" align="right">
-            <input class="TEXT" type='button' onclick='login()' value="            登陆系统              " />
+            <input class="TEXT" type='button' id="login" onclick='login()' value="<%= res.title %>" />
           </td>
         </tr>
         <tr height="20px">
-          <td colspan="2" style="text-align:right;font-size:small"><a class="ohter" href="">联系我们</a> | <a class="ohter"
-              target="_blank" href="">帮助中心</a> | <a class="ohter" target="_blank"
-              href="http://39.97.119.181/myself/index.html">个人介绍</a></td>
+          <td colspan="2" style="text-align:right;font-size:small"><a class="ohter"
+              href="<%= res.router %>"><%= res.reverTitle %></a> | <a class="ohter" target="_blank" href="">帮助中心</a>
+            | <a class="ohter" target="_blank" href="http://39.97.119.181/myself/index.html">个人介绍</a></td>
         </tr>
       </table>
     </div>

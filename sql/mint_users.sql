@@ -27,7 +27,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `mint_users`;
 CREATE TABLE `mint_users` (
-  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(8) NOT NULL AUTO_INCREMENT,
   `guid` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
