@@ -1,6 +1,6 @@
 module.exports = {
-    host: 'localhost',
+    host: '39.97.119.181',
     user: 'root',
-    password: 'localsense',
-    database: 'mint'
+    password: 'Yqk@229218087',
+    database: 'mint_ap'
 }

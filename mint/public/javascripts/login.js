@@ -9,7 +9,7 @@ function login() {
   }
   if (loginValue == '登录') {
     ajax({
-      url: '/login/getuser',
+      url: '/user/loginUser',
       type: 'GET',
       data: {
         username: username,
@@ -29,7 +29,7 @@ function login() {
     })
   } else if (loginValue == '注册') {
     ajax({
-      url: '/login/regis',
+      url: '/user/regis',
       type: 'GET',
       data: {
         username: username,
