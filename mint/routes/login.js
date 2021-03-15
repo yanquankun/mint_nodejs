@@ -31,7 +31,7 @@ router.get('/user/getusers', function (req, res) {
   })
 })
 // 登录
-router.get('/user/loginUser', function (req, res) {
+router.get('/user/loginUser', function (req, res,next) {
   resBody.init();
   const username = req.query.username;
   const password = req.query.password;
@@ -41,6 +41,7 @@ router.get('/user/loginUser', function (req, res) {
       resBody.msg = 'failure';
       resBody.data = [];
     }
+    resBody.data = results[0];
     res.send(resBody);
   })
 })

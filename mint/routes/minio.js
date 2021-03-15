@@ -46,8 +46,12 @@ router.post('/getSourceByUserId', function (req, res) {
         var stream = minioClient.listObjects(userid, '', true);
         resBody.data = [];
         stream.on('data', function (obj) {
-            console.log(obj)
-            resBody.data.push(obj);
+            minioClient.presignedUrl('GET', userid, obj.name, 7 * 24 * 60 * 60, function (err, presignedUrl) {
+                if (err) obj['presignedUrl'] = '';
+                obj['presignedUrl'] = presignedUrl;
+                console.log(obj)
+                resBody.data.push(obj);
+            })
         })
         stream.on('end', function () {
             stream.emit('close', () => { });
